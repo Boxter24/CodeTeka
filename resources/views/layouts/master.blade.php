@@ -94,6 +94,15 @@
                                 </p>
                             </router-link>
                         </li>
+
+                        <li class="nav-item">
+                            <router-link to="/programas" class="nav-link">
+                                <i class="nav-icon fas fa-code teal"></i>
+                                <p>
+                                    Programs                                    
+                                </p>
+                            </router-link>
+                        </li>
                         @endcan
                         <li class="nav-item">
                             <router-link to="/profile" class="nav-link">
@@ -102,7 +111,8 @@
                                     Profile                                    
                                 </p>
                             </router-link>
-                        </li>
+                        </li>                        
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
@@ -145,7 +155,7 @@
             <div class="float-right d-none d-sm-inline">
                 Jose Quintero - Julio Trigo - Salvador Leal
             </div>
-            <strong>Copyright &copy; 2022 <a href="https://adminlte.io">CodeTeka.io</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2022 <a href="https://github.com/Boxter24/CodeTeka">CodeTeka.io</a>.</strong> All rights reserved.
         </footer>
     </div>
 

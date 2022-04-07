@@ -21,3 +21,8 @@ Route::apiResources(['user' => 'API\UserController']);
 Route::get('profile', 'API\UserController@profile');
 Route::get('/', 'API\UserController@profile');
 Route::put('profile', 'API\UserController@updateProfile');
+
+Route::apiResources(['programa' => 'API\ProgramaController']);
+Route::get('programa', 'API\ProgramaController@index');
+Route::get('/', 'API\ProgramaController@index');
+

@@ -1,14 +1,14 @@
 <template>
     <div class="container">
-        <div class="row mt-5" v-if="$gate.isAdmin()">
+        <div class="row mt-5">
             <div class="col-md-12">        
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Usuarios</h3>      
+                        <h3 class="card-title">Programas</h3>      
 
                         <div class="card-tools">
                             <button class="btn btn-success" @click="newModal" data-toggle="modal" data-target="#addNew">
-                                Añadir Usuario
+                                Añadir Programa
                                 <i class="fas fa-user-plus fa-fw"></i>
                             </button>
                         </div>              
@@ -19,34 +19,32 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Nombre</th>                                    
-                                    <th>CI</th>
-                                    <th>Telefono</th>
-                                    <th>Direccion</th>
-                                    <th>Tipo</th>
-                                    <th>Correo</th>                                                                        
-                                    <th>Editar</th>
+                                    <th>Nombre del Programa</th>                                    
+                                    <th>Categoria</th>
+                                    <th>SubCategoria</th>
+                                    <th>Framework o Lenguaje</th>                                  
+                                    <th>enlace</th>                                                                        
+                                    <th>Acciones</th>
                                     <!--<th>Bio</th>                                    
                                     <th>Editar</th>-->
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="user in users.data" :key="user.id">
-                                    <td>{{user.id}}</td>
-                                    <td>{{user.name}}</td>
-                                    <td>{{user.ci}}</td>
-                                    <td>{{user.telefono}}</td>
-                                    <td>{{user.direccion}}</td>
-                                    <td>{{user.tipo}}</td>
-                                    <td>{{user.email}}</td>
+                                <tr v-for="programa in programas.data" :key="programa.id">
+                                    <td>{{programa.id}}</td>
+                                    <td>{{programa.nombre_programa}}</td>
+                                    <td>{{programa.categoria}}</td>
+                                    <td>{{programa.subcategoria}}</td>
+                                    <td>{{programa.framework_lenguaje}}</td>                                    
+                                    <td>{{programa.enlace}}</td>
                                     <!--<td>{{user.bio}}</td>-->                                
 
                                     <td class="justify-items-center">
                                         <a href="#">
-                                            <i class="fa fa-edit" @click="editModal(user)"></i>
+                                            <i class="fa fa-edit" @click="editModal(programa)"></i>
                                         </a>
                                         /
-                                        <a href="#" @click="deleteUser(user.id)">
+                                        <a href="#" @click="deletePrograma(programa.id)">
                                             <i class="fa fa-trash red"></i>
                                         </a>
                                     </td>   
@@ -65,63 +63,53 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" v-show="!editmode" id="addNewLabel">Crear Usuario</h5>
+                        <h5 class="modal-title" v-show="!editmode" id="addNewLabel">Crear Programa</h5>
                         <h5 class="modal-title" v-show="editmode" id="addNewLabel">Actualizar info</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="editmode ? updateUser() : createUser()">
+                    <form @submit.prevent="editmode ? updatePrograma() : createPrograma()">
                         <div class="modal-body">
                             <div class="form-group">
-                                <input v-model="form.name" type="text" name="name"
+                                <input v-model="form.nombre_programa" type="text" name="nombre_programa"
                                     placeholder="Name"
-                                    class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
-                                <has-error :form="form" field="name"></has-error>
+                                    class="form-control" :class="{ 'is-invalid': form.errors.has('nombre_programa') }">
+                                <has-error :form="form" field="nombre_programa"></has-error>
                             </div>
 
                             <div class="form-group">
-                                <input v-model="form.ci" type="number" name="ci"
-                                    placeholder="CI"
-                                    class="form-control" :class="{ 'is-invalid': form.errors.has('ci') }">
-                                <has-error :form="form" field="ci"></has-error>
-                            </div>
-
-                            <div class="form-group">
-                                <input v-model="form.telefono" type="number" name="telefono"
-                                    placeholder="Telefono"
-                                    class="form-control" :class="{ 'is-invalid': form.errors.has('telefono') }">
-                                <has-error :form="form" field="ci"></has-error>
-                            </div>                                                                           
-
-                            <div class="form-group">
-                                <textarea v-model="form.direccion" name="direccion" id="direccion"
-                                placeholder="Direccion"
-                                class="form-control" :class="{ 'is-invalid': form.errors.has('direccion') }"></textarea>
-                                <has-error :form="form" field="direccion"></has-error>
-                            </div>       
-
-                            <div class="form-group">
-                                <select name="type" v-model="form.tipo" id="type" class="form-control" :class="{ 'is-invalid': form.errors.has('type') }">
-                                    <option value="">Select User Role</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="user">User</option>                                    
+                                <select name="categoria" v-model="form.categoria" id="categoria" class="form-control" :class="{ 'is-invalid': form.errors.has('categoria') }">
+                                    <option value="">Seleccione una Categoria</option>
+                                    <option value="movil">App Movil</option>
+                                    <option value="escritorio">App de Escritorio</option>                                    
                                 </select>
-                                <has-error :form="form" field="type"></has-error>
-                            </div>                     
-                                                                                                                                                            
-                            <div class="form-group">
-                                <input v-model="form.email" type="email" name="email"
-                                    placeholder="Email"
-                                    class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
-                                <has-error :form="form" field="email"></has-error>
-                            </div>
+                                <has-error :form="form" field="categoria"></has-error>
+                            </div>  
 
                             <div class="form-group">
-                                <input v-model="form.password" type="password" name="password" id="password"
-                                placeholder="Password"
-                                class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
-                                <has-error :form="form" field="password"></has-error>
+                                <select name="subcategoria" v-model="form.subcategoria" id="subcategoria" class="form-control" :class="{ 'is-invalid': form.errors.has('subcategoria') }">
+                                    <option value="">Seleccione una Subcategoria</option>
+                                    <option value="juego">Juego</option>
+                                    <option value="ecommerce">Ecommerce</option>                                    
+                                </select>
+                                <has-error :form="form" field="subcategoria"></has-error>
+                            </div>                                                                      
+
+                            <div class="form-group">
+                                <textarea v-model="form.framework_lenguaje" name="framework_lenguaje" id="framework_lenguaje"
+                                placeholder="framework o lenguaje"
+                                class="form-control" :class="{ 'is-invalid': form.errors.has('framework_lenguaje') }"></textarea>
+                                <has-error :form="form" field="framework_lenguaje"></has-error>
+                            </div>          
+
+                                                        
+                                                                                                                                                                                       
+                            <div class="form-group">
+                                <input v-model="form.enlace" type="text" name="enlace" id="enlace"
+                                placeholder="Enlace"
+                                class="form-control" :class="{ 'is-invalid': form.errors.has('enlace') }">
+                                <has-error :form="form" field="enlace"></has-error>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -137,36 +125,30 @@
 </template>
 
 <script>    
-    import NotFound from './NotFound.vue'
     export default {  
-        components:{
-            'not-found':NotFound
-        },
         data() {
             return {                
                 editmode: false,
-                users : {},
+                programas : {},
                 form: new Form({
                     id : '',
-                    name : '',                    
-                    ci : '',
-                    telefono : '',
-                    direccion : '',                    
-                    foto : '',
-                    tipo : '',
-                    email : '',
-                    password : '',
+                    nombre_programa : '',                    
+                    categoria : '',
+                    subcategoria : '',
+                    framework_lenguaje : '',                    
+                    foto_programa : '',
+                    enlace : '',
                 })
             }
         },
         mounted() {
-            console.log(this.form)
+            console.log(this.form.nombre_programa)
         },
         methods: { 
-            updateUser(){
+            updatePrograma(){
                 this.$Progress.start();
                 // console.log('Editing data');
-                this.form.put('api/user/'+this.form.id)
+                this.form.put('api/programa/'+this.form.id)
                 .then(() => {
                     // success
                     $('#addNew').modal('hide');
@@ -193,7 +175,7 @@
                 this.form.reset();
                 $('#addNew').modal('show');
             },
-            deleteUser(id){
+            deletePrograma(id){
                 Swal.fire({
                     title: 'Estas Seguro?',
                     text: "Esta accion no se puede revertir!",
@@ -204,10 +186,10 @@
                     confirmButtonText: 'Si, Borrar!'
                     }).then((result) => {
                     if (result.isConfirmed) {
-                        this.form.delete('api/user/'+id).then(()=>{
+                        this.form.delete('api/programa/'+id).then(()=>{
                             Swal.fire(
                             'Eliminado!',
-                            'El Usuario ha sido Eliminado.',
+                            'El Programa ha sido Eliminado.',
                             'success'
                             )
                             Fire.$emit('AfterCreate');
@@ -217,32 +199,30 @@
                     }
                 })
             },                                                              
-            loadUsers(){                
-                if(this.$gate.isAdmin()){
-                    axios.get("api/user").then(({ data }) => (this.users = data));
-                }
+            loadPrograma(){                                
+                axios.get("api/programa").then(({ data }) => (this.programas = data));
+                
             },            
-            createUser(){
+            createPrograma(){
                 this.$Progress.start();
-                this.form.post('api/user')
+                this.form.post('api/programa')
                 .then(()=>{
                     Fire.$emit('AfterCreate');
                     $('#addNew').modal('hide')
                     Toast.fire({
                     icon: 'success',
-                    title: 'Usuario Creado Satisfactoriamente'
+                    title: 'Programa Creado Satisfactoriamente'
                 })
                 this.$Progress.finish();
                 })
                 .catch(()=>{
                 })
-            }   
+            },
+            
         },
         created() {
-            this.loadUsers();
-            Fire.$on('AfterCreate',() => {
-               this.loadUsers();
-            });          
+            this.loadPrograma();
+                      
         }
     }
 </script>

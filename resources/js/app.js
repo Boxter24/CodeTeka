@@ -61,8 +61,8 @@ let routes = [
     { path: '/dashboard', component: require('./components/Dashboard.vue').default },    
     { path: '/users', component: require('./components/users/Users.vue').default },    
     { path: '/profile', component: require('./components/users/Profile.vue').default },
-    { path: '/developer', component: require('./components/users/Developer.vue').default}, 
-    { path: '/profile', component: require('./components/users/Profile.vue').default },
+    { path: '/developer', component: require('./components/users/Developer.vue').default},     
+    { path: '/programas', component: require('./components/users/Programas.vue').default },
 ]
 
 const router = new VueRouter({
