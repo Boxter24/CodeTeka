@@ -16,6 +16,7 @@ use Illuminate\Routing\Router;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/fotos', 'WelcomeController@index');
 
 Auth::routes();
 

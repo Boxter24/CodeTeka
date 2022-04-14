@@ -9,6 +9,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import Vuetify from 'vuetify'
+Vue.use(Vuetify);
+
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
@@ -62,7 +65,7 @@ let routes = [
     { path: '/users', component: require('./components/users/Users.vue').default },    
     { path: '/profile', component: require('./components/users/Profile.vue').default },
     { path: '/developer', component: require('./components/users/Developer.vue').default},     
-    { path: '/programas', component: require('./components/users/Programas.vue').default },
+    { path: '/programas', component: require('./components/users/Programas.vue').default },    
 ]
 
 const router = new VueRouter({
@@ -95,6 +98,10 @@ Vue.component(
     'not-found',
     require('./components/users/NotFound.vue')
 );
+Vue.component(
+    'welcome-carrusel', 
+    require('./components/Welcome.vue').default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -102,7 +109,8 @@ Vue.component(
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+const app = new Vue({    
     el: '#app',
+    vuetify: new Vuetify(),
     router
 });

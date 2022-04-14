@@ -221,8 +221,7 @@
             
         },
         created() {
-            this.loadPrograma();
-                      
+            this.loadPrograma();                      
         }
     }
 </script>
