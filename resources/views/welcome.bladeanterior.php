@@ -18,12 +18,13 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         
         <!-- Styles -->
-        <link href="{{ asset('css/navbarWelcome.css') }}" rel="stylesheet">        
-
+        <link href="{{ asset('css/navbarWelcome.css') }}" rel="stylesheet">      
+          
         <!-- Iconos -->
         <script src="https://kit.fontawesome.com/72ffbb4e9b.js" crossorigin="anonymous"></script>
+        
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>    
+        <script src="{{ asset('js/app.js') }}" ></script>    
         <script src="{{ asset('js/welcome.js') }}" defer></script>
     </head>
     <body>
@@ -60,11 +61,9 @@
                     </nav>       
                 </header>        
                             
-                <div class="main my-16">                                        
-                    <welcome-carrusel class="my-16"></welcome-carrusel>                                                                                                    
-                    <router-view></router-view>
+                <div class="main my-16">
+                    <welcome-carrusel class="my-16"></welcome-carrusel>
                 </div>                
-                
             </v-app>
         </div>
 
@@ -83,44 +82,5 @@
             })();
         </script>
         <!--End of Tawk.to Script-->
-
-    
-    {{--<script src="https://www.paypalobjects.com/api/checkout.js"></script>
-    <script>
-      paypal.Button.render({
-        env: 'sandbox', // Or 'production'
-        style: {
-          size: 'large',
-          color: 'gold',
-          shape: 'pill',
-        },
-        // Set up the payment:
-        // 1. Add a payment callback
-        payment: function(data, actions) {
-          // 2. Make a request to your server
-          return actions.request.post('/api/create-payment')
-            .then(function(res) {
-              // 3. Return res.id from the response
-              // console.log(res);
-              return res.id;
-            });
-        },
-        // Execute the payment:
-        // 1. Add an onAuthorize callback
-        onAuthorize: function(data, actions) {
-          // 2. Make a request to your server
-          return actions.request.post('/api/execute-payment', {
-            paymentID: data.paymentID,
-            payerID:   data.payerID
-          })
-            .then(function(res) {
-              console.log(res);
-              alert('PAYMENT WENT THROUGH!!');
-              // 3. Show the buyer a confirmation message.
-            });
-        }
-      }, '#paypal-button');
-    </script>--}}
-
     </body>
 </html>

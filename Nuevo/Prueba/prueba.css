@@ -1,0 +1,85 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+
+
+.Background{
+    background-image: url('./Prueba.jpg');
+    width: 100%;
+    height: 487px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.Titulo{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.TitleH{
+    margin: 35px;
+    color:white;
+}
+
+.Parrafo2{
+    font-size: 1.2rem;
+    color:white;
+    font-weight: bold;
+}
+
+.CardExplanation h1{
+    display: flex;
+    justify-content: center;
+    margin: 60px;
+
+}
+
+.CardExplanation{
+    margin-bottom: 100px;
+    display: grid;
+    justify-content: center;
+}
+
+.BackgroundCard{
+    gap: 15px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+.TitleCH{
+    margin-left: 20px;
+}
+
+.BackgroundFinal{
+    transform: translateX(2rem) translateY(5rem);
+}
+
+.IMG {
+    width: 120px;
+    height: 90px;
+}
+
+
+.CardImage{
+    margin: 20px;
+}
+
+.CardText{
+    margin: 20px;
+}
+
+.TitleCH{
+    font-size:2.2rem;    
+    margin-bottom:  15px;
+}
+
+p{
+    font-size: 1.5rem;
+    width: 500px;
+}

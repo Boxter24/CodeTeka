@@ -1,0 +1,29 @@
+Metodos pagos es una carpeta donde esta la parte de vue.js
+
+Esta la puse en \resource\js\components -> aqui coloque la carpeta
+
+---------------------------------------------------------------------
+
+api.php
+
+Esta la puse en \resource\views -> aqui la coloque
+
+No sabia donde ponerla asi porque en el video es diferentes pero bueno,
+me avisas si funciona
+
+---------------------------------------------------------------------
+
+welcome
+
+Esta es el mismo welcome que estaba instalado solo que puse un boton que
+creo que no deberia ir ahi y nisiquiera se si esta bien colocado
+
+El boton tambien lo coloque en las demas clases de vue.js que son los 3 planes
+la cosa es que nose si funciona o no y deje el codigo en welcome para que lo vieras
+
+---------------------------------------------------------------------
+
+Tambien meti otra zip donde esta la pagina que me base para hacer la parte
+de cada metodo por separado, pero como esa esta en html y lo otro en vue.js
+creo que no quedo igual porque me obligaba a quitar algunas cosas, asi que
+si se ve muy mal, ahi tienes el codigo de la pagina ya mejor hecha

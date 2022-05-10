@@ -66,6 +66,10 @@ let routes = [
     { path: '/profile', component: require('./components/users/Profile.vue').default },
     { path: '/developer', component: require('./components/users/Developer.vue').default},     
     { path: '/programas', component: require('./components/users/Programas.vue').default },    
+    { path: '/', component: require('./components/pagos/MetodosPagos.vue').default },    
+    { path: '/plan1', component: require('./components/pagos/plan1.vue').default },    
+    { path: '/plan2', component: require('./components/pagos/plan2.vue').default },    
+    { path: '/plan3', component: require('./components/pagos/plan3.vue').default },    
 ]
 
 const router = new VueRouter({
@@ -101,6 +105,10 @@ Vue.component(
 Vue.component(
     'welcome-carrusel', 
     require('./components/Welcome.vue').default
+);
+Vue.component(
+    'metodos-pagos', 
+    require('./components/pagos/MetodosPagos.vue').default
 );
 
 /**
